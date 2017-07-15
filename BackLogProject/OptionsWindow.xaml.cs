@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace BackLogProject
 {
@@ -19,9 +10,44 @@ namespace BackLogProject
 	/// </summary>
 	public partial class OptionsWindow : Window
 	{
+		private ICommand _return;
+
 		public OptionsWindow()
 		{
 			InitializeComponent();
+			DataContext = this;
+			ButtonReturn = new DelegateCommand(ReturnToHelloView);
+		}
+
+
+		public ICommand ButtonReturn
+		{
+			get
+			{
+				return _return;
+			}
+			set
+			{
+				_return = value;
+				OnPropertyChanged();
+			}
+		}
+		public void ReturnToHelloView()
+		{
+			HelloView hello = new HelloView();
+			hello.Show();
+			ExitExecute();
+		}
+
+		private void ExitExecute()
+		{
+			this.Close();
+		}
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 }

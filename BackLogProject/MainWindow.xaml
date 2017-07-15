@@ -19,24 +19,23 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                     <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="0"
-                        Width="60"
-                        Height="60"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
                         Command="{Binding ButtonAdd}"
                         FontSize="20">
                     ADD
                 </Button>
-                <Button Grid.Column="0"
-                        Width="60"
-                        Height="60"
-                        Margin=" 60 0 0 0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        FontSize="20">
+                <Button Grid.Column="1" FontSize="20">
                     Save
+                </Button>
+                <Button Grid.Column="2" FontSize="20">
+                    Load
+                </Button>
+                <Button Grid.Column="3"
+                        Command="{Binding ButtonReturn}"
+                        FontSize="20">
+                    Return
                 </Button>
 
             </Grid>

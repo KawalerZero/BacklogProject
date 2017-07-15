@@ -13,12 +13,14 @@ namespace BackLogProject
 	public partial class MainWindow : Window, INotifyPropertyChanged
 	{
 		private ICommand _addSomething;
+		private ICommand _return;
 
 		public MainWindow()
 		{
 			InitializeComponent();
 			DataContext = this;
 			ButtonAdd = new DelegateCommand(AddSomethingNew);
+			ButtonReturn = new DelegateCommand(ReturnToHelloView);
 		}
 		public ICommand ButtonAdd
 		{
@@ -32,11 +34,35 @@ namespace BackLogProject
 				OnPropertyChanged();
 			}
 		}
+		public ICommand ButtonReturn
+		{
+			get
+			{
+				return _return;
+			}
+			set
+			{
+				_return = value;
+				OnPropertyChanged();
+			}
+		}
 
 		public void AddSomethingNew()
 		{
 
 			lolo.Children.Add(new TextBox() { Text = "Babau" });
+		}
+
+		public void ReturnToHelloView()
+		{
+			HelloView hello = new HelloView();
+			hello.Show();
+			ExitExecute();
+		}
+
+		private void ExitExecute()
+		{
+			this.Close();
 		}
 		public event PropertyChangedEventHandler PropertyChanged;
 
