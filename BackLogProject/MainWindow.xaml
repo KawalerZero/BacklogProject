@@ -37,22 +37,71 @@
                         FontSize="20">
                     Return
                 </Button>
-
             </Grid>
 
-            <Grid Name="lolo"
-                  Width="940"
-                  Height="480"
-                  DockPanel.Dock="Bottom">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0" Background="Azure" />
+            <Grid DockPanel.Dock="Bottom">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
 
-                <Grid Grid.Column="1" Background="Crimson" />
-                <Grid Grid.Column="2" Background="PaleGoldenrod" />
+
+
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" Background="Azure">
+                        <Label FontSize="30">IDEA</Label>
+                    </Grid>
+                    <Grid Grid.Column="1" Background="Crimson">
+                        <Label FontSize="30">
+                            TODO
+                        </Label>
+                    </Grid>
+                    <Grid Grid.Column="2" Background="PaleGoldenrod">
+                        <Label FontSize="30">
+                            IN PROGRESS
+                        </Label>
+                    </Grid>
+                    <Grid Grid.Column="3" Background="Green">
+                        <Label FontSize="30">
+                            TO REVIEW
+                        </Label>
+                    </Grid>
+                    <Grid Grid.Column="4" Background="Purple">
+                        <Label FontSize="30">
+                            DONE
+                        </Label>
+                    </Grid>
+                </Grid>
+
+                <Grid Name="lolo" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0"
+                          Margin="-5,0,5,0"
+                          Background="Azure" />
+                    <Grid Grid.Column="1" Background="Crimson" />
+                    <Grid Grid.Column="2" Background="PaleGoldenrod" />
+                    <Grid Grid.Column="3" Background="Green" />
+                    <Grid Grid.Column="4"
+                          Height="400"
+                          VerticalAlignment="Top"
+                          Background="Purple" />
+                </Grid>
+
+
             </Grid>
         </DockPanel>
 

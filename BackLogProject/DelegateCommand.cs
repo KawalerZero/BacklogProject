@@ -28,7 +28,6 @@ namespace BackLogProject
 		{
 			_command();
 		}
-
 		public bool CanExecute(object parameter)
 		{
 			return _canExecute == null || _canExecute();
