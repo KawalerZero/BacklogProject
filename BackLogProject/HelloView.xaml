@@ -9,9 +9,7 @@
         Height="300"
         mc:Ignorable="d">
     <DockPanel>
-        <Grid Height="30"
-              Background="Blue"
-              DockPanel.Dock="Bottom">
+        <Grid Height="30" DockPanel.Dock="Bottom">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
@@ -34,7 +32,7 @@
                 Exit
             </Button>
         </Grid>
-        <Grid Background="Blue">
+        <Grid Name="GridHello">
             <TextBlock HorizontalAlignment="Center"
                        VerticalAlignment="Top"
                        Background="Blue"

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using BackLogProject.Helper;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
@@ -16,10 +17,11 @@ namespace BackLogProject
 		private ICommand _buttonExitCommand;
 		private ICommand _buttonOptionsCommand;
 
-
 		public HelloView()
 		{
 			InitializeComponent();
+			var value = typeof(System.Windows.Media.Brushes).GetProperty(Enumerators.Background).GetValue(null);
+			GridHello.Background = value as System.Windows.Media.Brush;
 			DataContext = this;
 			ButtonOk = new DelegateCommand(NextExecute);
 			ButtonOptions = new DelegateCommand(OptionsExecute);

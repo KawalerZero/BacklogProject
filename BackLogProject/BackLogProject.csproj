@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="BacklogItemWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HelloView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -67,7 +71,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DelegateCommand.cs" />
+    <Compile Include="Helper\Enumerators.cs" />
+    <Compile Include="BacklogItemWindow.xaml.cs">
+      <DependentUpon>BacklogItemWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\DelegateCommand.cs" />
     <Compile Include="HelloView.xaml.cs">
       <DependentUpon>HelloView.xaml</DependentUpon>
     </Compile>
@@ -111,6 +119,9 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Windows\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

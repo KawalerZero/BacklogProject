@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace BackLogProject
+namespace BackLogProject.Helper
 {
 	public class DelegateCommand : ICommand
 	{
