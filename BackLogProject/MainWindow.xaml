@@ -44,10 +44,6 @@
                     <RowDefinition Height="80" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-
-
-
-
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -80,7 +76,6 @@
                         </Label>
                     </Grid>
                 </Grid>
-
                 <Grid Name="lolo" Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -100,12 +95,7 @@
                           VerticalAlignment="Top"
                           Background="Purple" />
                 </Grid>
-
-
             </Grid>
         </DockPanel>
-
-
     </Grid>
-
 </Window>

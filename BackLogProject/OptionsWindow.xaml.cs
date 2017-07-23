@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace BackLogProject
@@ -18,8 +19,9 @@ namespace BackLogProject
 			InitializeComponent();
 			DataContext = this;
 			ButtonReturn = new DelegateCommand(ReturnToHelloView);
+			cmbColors.ItemsSource = typeof(Enumerators.Themes).GetEnumValues();
+			cmbColors.Text = Enumerators.Instance.Background;
 		}
-
 
 		public ICommand ButtonReturn
 		{
@@ -33,6 +35,7 @@ namespace BackLogProject
 				OnPropertyChanged();
 			}
 		}
+
 		public void ReturnToHelloView()
 		{
 			HelloView hello = new HelloView();
@@ -44,11 +47,17 @@ namespace BackLogProject
 		{
 			this.Close();
 		}
+
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		}
+
+		private void OnMyComboBoxChanged(object sender, SelectionChangedEventArgs e)
+		{
+			Enumerators.Instance.Background = (sender as ComboBox).SelectedItem.ToString();
 		}
 	}
 }

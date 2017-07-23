@@ -23,6 +23,7 @@ namespace BackLogProject
 			ButtonAdd = new DelegateCommand(AddSomethingNew);
 			ButtonReturn = new DelegateCommand(ReturnToHelloView);
 		}
+
 		public ICommand ButtonAdd
 		{
 			get
@@ -35,6 +36,7 @@ namespace BackLogProject
 				OnPropertyChanged();
 			}
 		}
+
 		public ICommand ButtonReturn
 		{
 			get
@@ -65,6 +67,7 @@ namespace BackLogProject
 		{
 			this.Close();
 		}
+
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

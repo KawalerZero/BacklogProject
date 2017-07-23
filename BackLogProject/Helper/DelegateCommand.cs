@@ -28,6 +28,7 @@ namespace BackLogProject.Helper
 		{
 			_command();
 		}
+
 		public bool CanExecute(object parameter)
 		{
 			return _canExecute == null || _canExecute();
@@ -64,7 +65,6 @@ namespace BackLogProject.Helper
 		{
 			return _canExecute == null || _canExecute();
 		}
-
 	}
 }
 

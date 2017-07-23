@@ -1,4 +1,5 @@
 ﻿using BackLogProject.Helper;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -12,7 +13,6 @@ namespace BackLogProject
 	public partial class HelloView : Window, INotifyPropertyChanged
 
 	{
-
 		private ICommand _buttonGoToMainCommand;
 		private ICommand _buttonExitCommand;
 		private ICommand _buttonOptionsCommand;
@@ -20,14 +20,30 @@ namespace BackLogProject
 		public HelloView()
 		{
 			InitializeComponent();
-			var value = typeof(System.Windows.Media.Brushes).GetProperty(Enumerators.Background).GetValue(null);
-			GridHello.Background = value as System.Windows.Media.Brush;
+			try
+			{
+				Enumerators enumerators = Enumerators.Instance;
+				var value = typeof(System.Windows.Media.Brushes).GetProperty(enumerators.Background).GetValue(null);
+				if (value != null)
+				{
+					GridHello.Background = value as System.Windows.Media.Brush;
+				}
+			}
+			catch (NullReferenceException nullReferenceException)
+			{
+				MessageBox.Show(Properties.Resources.ResourceManager.GetString("ExceptionNullReferenceTheme"));
+			}
+			catch (Exception exception)
+			{
+				MessageBox.Show(exception.ToString());
+			}
 			DataContext = this;
 			ButtonOk = new DelegateCommand(NextExecute);
 			ButtonOptions = new DelegateCommand(OptionsExecute);
 			ButtonExit = new DelegateCommand(ExitExecute);
 
 		}
+
 		public ICommand ButtonOk
 		{
 			get
@@ -40,6 +56,7 @@ namespace BackLogProject
 				OnPropertyChanged();
 			}
 		}
+
 		public ICommand ButtonOptions
 		{
 			get
@@ -52,6 +69,7 @@ namespace BackLogProject
 				OnPropertyChanged();
 			}
 		}
+
 		public ICommand ButtonExit
 		{
 			get
@@ -92,6 +110,5 @@ namespace BackLogProject
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
-
 	}
 }

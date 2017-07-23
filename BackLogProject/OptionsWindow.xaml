@@ -10,18 +10,21 @@
         mc:Ignorable="d">
     <Grid Width="960" Height="540">
         <DockPanel>
-            <Grid Height="60"
-                  VerticalAlignment="Top"
+            <Grid VerticalAlignment="Top"
                   Background="Gray"
                   DockPanel.Dock="Top">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Button Grid.Column="0"
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0"
                         Command="{Binding ButtonReturn}"
                         FontSize="20">
                     Return
                 </Button>
+                <ComboBox Name="cmbColors"
+                          Grid.Row="1"
+                          SelectionChanged="OnMyComboBoxChanged"/>
             </Grid>
         </DockPanel>
     </Grid>

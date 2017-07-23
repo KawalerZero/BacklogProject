@@ -2,8 +2,25 @@
 {
 	public class Enumerators
 	{
-		public static string Background = Themes.Blue.ToString();
-		//public string background = Combobox.Value;
-		public enum Themes { Black, Blue, White };
+		private static Enumerators _instance;
+		public string Background = Themes.Blue.ToString();
+
+		private Enumerators() { }
+
+		public static Enumerators Instance
+		{
+			get
+			{
+				if (_instance == null)
+				{
+					_instance = new Enumerators();
+					_instance.Background = "Blue";
+				}
+				return _instance;
+			}
+		}
+
+
+		public enum Themes { DarkGreen, Blue, White, DeepPink };
 	}
 }
