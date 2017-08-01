@@ -1,4 +1,5 @@
 ﻿using BackLogProject.Helper;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -17,6 +18,7 @@ namespace BackLogProject
 		public OptionsWindow()
 		{
 			InitializeComponent();
+			SetBackgroundTheme();
 			DataContext = this;
 			ButtonReturn = new DelegateCommand(ReturnToHelloView);
 			cmbColors.ItemsSource = typeof(Enumerators.Themes).GetEnumValues();
@@ -58,6 +60,13 @@ namespace BackLogProject
 		private void OnMyComboBoxChanged(object sender, SelectionChangedEventArgs e)
 		{
 			Enumerators.Instance.Background = (sender as ComboBox).SelectedItem.ToString();
+			SetBackgroundTheme();
+		}
+		private void SetBackgroundTheme()
+		{
+			var listOfElements = new List<FrameworkElement>();
+			listOfElements.Add(OptionDockPanel);
+			BackgroundController.SetBackgroundTheme(listOfElements);
 		}
 	}
 }

@@ -1,5 +1,5 @@
 ﻿using BackLogProject.Helper;
-using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -20,23 +20,7 @@ namespace BackLogProject
 		public HelloView()
 		{
 			InitializeComponent();
-			try
-			{
-				Enumerators enumerators = Enumerators.Instance;
-				var value = typeof(System.Windows.Media.Brushes).GetProperty(enumerators.Background).GetValue(null);
-				if (value != null)
-				{
-					GridHello.Background = value as System.Windows.Media.Brush;
-				}
-			}
-			catch (NullReferenceException nullReferenceException)
-			{
-				MessageBox.Show(Properties.Resources.ResourceManager.GetString("ExceptionNullReferenceTheme"));
-			}
-			catch (Exception exception)
-			{
-				MessageBox.Show(exception.ToString());
-			}
+			SetBackgroundTheme();
 			DataContext = this;
 			ButtonOk = new DelegateCommand(NextExecute);
 			ButtonOptions = new DelegateCommand(OptionsExecute);
@@ -44,6 +28,13 @@ namespace BackLogProject
 
 		}
 
+		private void SetBackgroundTheme()
+		{
+			var listOfElements = new List<FrameworkElement>();
+			listOfElements.Add(GridHello);
+			listOfElements.Add(HelloTextBlock);
+			BackgroundController.SetBackgroundTheme(listOfElements);
+		}
 		public ICommand ButtonOk
 		{
 			get
@@ -85,8 +76,7 @@ namespace BackLogProject
 
 		private void NextExecute()
 		{
-			MainWindow main = new MainWindow();
-			main.Show();
+			InstanceMainWindowHandler.instanceMainWindow.Visibility = Visibility.Visible;
 			ExitExecute();
 		}
 
@@ -101,8 +91,6 @@ namespace BackLogProject
 		{
 			this.Close();
 		}
-
-
 
 		public event PropertyChangedEventHandler PropertyChanged;
 

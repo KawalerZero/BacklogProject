@@ -9,7 +9,7 @@
         Height="540"
         mc:Ignorable="d">
     <Grid Width="960" Height="540">
-        <DockPanel>
+        <DockPanel Name="OptionDockPanel">
             <Grid VerticalAlignment="Top"
                   Background="Gray"
                   DockPanel.Dock="Top">

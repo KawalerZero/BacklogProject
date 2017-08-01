@@ -33,9 +33,9 @@
             </Button>
         </Grid>
         <Grid Name="GridHello">
-            <TextBlock HorizontalAlignment="Center"
+            <TextBlock Name="HelloTextBlock"
+                       HorizontalAlignment="Center"
                        VerticalAlignment="Top"
-                       Background="Blue"
                        FontFamily="New Times Roman"
                        FontSize="30"
                        Foreground="Red">

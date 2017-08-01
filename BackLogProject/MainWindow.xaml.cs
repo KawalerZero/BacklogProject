@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace BackLogProject
@@ -20,7 +19,7 @@ namespace BackLogProject
 		{
 			InitializeComponent();
 			DataContext = this;
-			ButtonAdd = new DelegateCommand(AddSomethingNew);
+			ButtonAdd = new DelegateCommand(AddNewBacklogItem);
 			ButtonReturn = new DelegateCommand(ReturnToHelloView);
 		}
 
@@ -50,10 +49,11 @@ namespace BackLogProject
 			}
 		}
 
-		public void AddSomethingNew()
+		public void AddNewBacklogItem()
 		{
-
-			lolo.Children.Add(new TextBox() { Text = "Babau" });
+			BacklogItemWindow backlogItemWindow = new BacklogItemWindow();
+			backlogItemWindow.Show();
+			InstanceMainWindowHandler.instanceMainWindow = this;
 		}
 
 		public void ReturnToHelloView()
@@ -65,7 +65,7 @@ namespace BackLogProject
 
 		private void ExitExecute()
 		{
-			this.Close();
+			this.Visibility = Visibility.Hidden;
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;

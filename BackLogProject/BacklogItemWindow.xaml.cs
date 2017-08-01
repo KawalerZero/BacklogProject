@@ -1,4 +1,9 @@
-﻿using System.Windows;
+﻿using BackLogProject.Helper;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Windows;
+using System.Windows.Input;
 
 namespace BackLogProject
 {
@@ -7,9 +12,69 @@ namespace BackLogProject
 	/// </summary>
 	public partial class BacklogItemWindow : Window
 	{
+		private ICommand _exit;
+		private ICommand _save;
 		public BacklogItemWindow()
 		{
 			InitializeComponent();
+			SetBackgroundTheme();
+			DataContext = this;
+			ButtonExit = new DelegateCommand(ExitExecute);
+			ButtonSave = new DelegateCommand(SaveBackLogItem);
+		}
+
+		private void SetBackgroundTheme()
+		{
+			var listOfElements = new List<FrameworkElement>();
+			listOfElements.Add(BacklogItemGrid);
+			BackgroundController.SetBackgroundTheme(listOfElements);
+		}
+
+		public ICommand ButtonExit
+		{
+			get
+			{
+				return _exit;
+			}
+			set
+			{
+				_exit = value;
+				OnPropertyChanged();
+			}
+		}
+
+		public ICommand ButtonSave
+		{
+			get
+			{
+				return _save;
+			}
+			set
+			{
+				_save = value;
+				OnPropertyChanged();
+			}
+		}
+
+		public void ExitExecute()
+		{
+			this.Close();
+		}
+
+		public void SaveBackLogItem()
+		{
+			BacklogItem backlogItem = new BacklogItem();
+			backlogItem.TopicText.Content = "ELO";
+			backlogItem.CategoryText.Content = "ELO2";
+			InstanceMainWindowHandler.instanceMainWindow;.First.Children.Add(backlogItem);
+			ExitExecute();
+		}
+
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 }

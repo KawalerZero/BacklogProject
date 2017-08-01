@@ -20,7 +20,8 @@
 			}
 		}
 
-
 		public enum Themes { DarkGreen, Blue, White, DeepPink };
+
+		public enum BacklogStates { Idea, ToDo, InProgress, ToReview, Done };
 	}
 }
