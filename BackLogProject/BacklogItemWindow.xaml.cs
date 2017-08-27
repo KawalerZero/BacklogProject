@@ -64,9 +64,13 @@ namespace BackLogProject
 		public void SaveBackLogItem()
 		{
 			BacklogItem backlogItem = new BacklogItem();
+			backlogItem.Height = 100;
+			backlogItem.Width = 200;
 			backlogItem.TopicText.Content = "ELO";
 			backlogItem.CategoryText.Content = "ELO2";
-			MainWindow.Instance.First.Children.Add(backlogItem);
+			backlogItem.State = Enumerators.BacklogStates.Idea;
+			MainWindow.Instance.ListOfBacklogItemsElements.AddElement(backlogItem);
+			MainWindow.Instance.LoadElements();
 			ExitExecute();
 		}
 
