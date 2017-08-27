@@ -66,7 +66,7 @@ namespace BackLogProject
 			BacklogItem backlogItem = new BacklogItem();
 			backlogItem.TopicText.Content = "ELO";
 			backlogItem.CategoryText.Content = "ELO2";
-			InstanceMainWindowHandler.instanceMainWindow.First.Children.Add(backlogItem);
+			MainWindow.Instance.First.Children.Add(backlogItem);
 			ExitExecute();
 		}
 

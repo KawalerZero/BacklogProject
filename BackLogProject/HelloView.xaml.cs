@@ -76,7 +76,7 @@ namespace BackLogProject
 
 		private void NextExecute()
 		{
-			InstanceMainWindowHandler.instanceMainWindow.Visibility = Visibility.Visible;
+			MainWindow.Instance.Visibility = Visibility.Visible;
 			ExitExecute();
 		}
 

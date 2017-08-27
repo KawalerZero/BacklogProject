@@ -87,7 +87,6 @@
     <Compile Include="HelloView.xaml.cs">
       <DependentUpon>HelloView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Helper\InstanceMainWindowHandler.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

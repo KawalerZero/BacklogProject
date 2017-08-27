@@ -12,17 +12,29 @@ namespace BackLogProject
 
 	public partial class MainWindow : Window, INotifyPropertyChanged
 	{
+		private static MainWindow _instance;
 		private ICommand _addSomething;
 		private ICommand _return;
 
-		public MainWindow()
+
+		private MainWindow()
 		{
 			InitializeComponent();
 			DataContext = this;
 			ButtonAdd = new DelegateCommand(AddNewBacklogItem);
 			ButtonReturn = new DelegateCommand(ReturnToHelloView);
 		}
-
+		public static MainWindow Instance
+		{
+			get
+			{
+				if (_instance == null)
+				{
+					_instance = new MainWindow();
+				}
+				return _instance;
+			}
+		}
 		public ICommand ButtonAdd
 		{
 			get
@@ -53,7 +65,6 @@ namespace BackLogProject
 		{
 			BacklogItemWindow backlogItemWindow = new BacklogItemWindow();
 			backlogItemWindow.Show();
-			InstanceMainWindowHandler.instanceMainWindow = this;
 		}
 
 		public void ReturnToHelloView()
