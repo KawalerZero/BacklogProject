@@ -70,11 +70,29 @@ namespace BackLogProject
 			backlogItemWindow.Show();
 		}
 
-		public void LoadElements()
+		public void LoadElements(BacklogItem backlogItem)
 		{
-			foreach (var backlogItem in ListOfBacklogItemsElements.listOfIdeaStateElements)
+			switch (backlogItem.State)
 			{
-				Instance.Idea.Children.Add(backlogItem);
+				case Enumerators.BacklogStates.Idea:
+					Instance.Idea.Children.Add(backlogItem);
+					break;
+				case Enumerators.BacklogStates.ToDo:
+					Instance.ToDo.Children.Add(backlogItem);
+					break;
+				case Enumerators.BacklogStates.InProgress:
+					Instance.InProgress.Children.Add(backlogItem);
+					break;
+				case Enumerators.BacklogStates.ToReview:
+					Instance.ToReview.Children.Add(backlogItem);
+					break;
+
+				case Enumerators.BacklogStates.Done:
+					Instance.Done.Children.Add(backlogItem);
+					break;
+				default:
+					MessageBox.Show("Invalid backlog state");
+					break;
 			}
 		}
 

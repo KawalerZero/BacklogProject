@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace BackLogProject
@@ -21,6 +22,8 @@ namespace BackLogProject
 			DataContext = this;
 			ButtonExit = new DelegateCommand(ExitExecute);
 			ButtonSave = new DelegateCommand(SaveBackLogItem);
+			cmbState.ItemsSource = typeof(Enumerators.BacklogStates).GetEnumValues();
+			cmbState.Text = Enumerators.Instance.State;
 		}
 
 		private void SetBackgroundTheme()
@@ -68,9 +71,14 @@ namespace BackLogProject
 			backlogItem.Width = 200;
 			backlogItem.TopicText.Content = "ELO";
 			backlogItem.CategoryText.Content = "ELO2";
-			backlogItem.State = Enumerators.BacklogStates.Idea;
+			Enumerators.BacklogStates state;
+			System.Enum.TryParse(Enumerators.Instance.State, out state);
+			if (!string.IsNullOrEmpty(state.ToString()))
+			{
+				backlogItem.State = state;
+			}
 			MainWindow.Instance.ListOfBacklogItemsElements.AddElement(backlogItem);
-			MainWindow.Instance.LoadElements();
+			MainWindow.Instance.LoadElements(backlogItem);
 			ExitExecute();
 		}
 
@@ -80,5 +88,11 @@ namespace BackLogProject
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
+
+		private void OnMyComboBoxChanged(object sender, SelectionChangedEventArgs e)
+		{
+			Enumerators.Instance.State = (sender as ComboBox).SelectedItem.ToString();
+		}
+
 	}
 }

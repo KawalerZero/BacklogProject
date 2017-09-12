@@ -4,6 +4,7 @@
 	{
 		private static Enumerators _instance;
 		public string Background = Themes.Blue.ToString();
+		public string State = BacklogStates.Idea.ToString();
 
 		private Enumerators() { }
 
@@ -15,6 +16,7 @@
 				{
 					_instance = new Enumerators();
 					_instance.Background = "Blue";
+					_instance.State = "Idea";
 				}
 				return _instance;
 			}
