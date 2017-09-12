@@ -12,8 +12,8 @@ namespace BackLogProject.Helper
 		{
 			try
 			{
-				xx
-				   Enumerators enumerators = Enumerators.Instance;
+
+				Enumerators enumerators = Enumerators.Instance;
 				var value = typeof(System.Windows.Media.Brushes).GetProperty(enumerators.Background).GetValue(null);
 				if (value != null)
 				{
