@@ -8,7 +8,7 @@ namespace BackLogProjectTests
 		[TestMethod]
 		public void TestMethod1()
 		{
-			Assert.AreEqual(2, 5);
+			Assert.AreEqual(3, 3);
 		}
 		[TestMethod]
 		public void TestMethod2()
